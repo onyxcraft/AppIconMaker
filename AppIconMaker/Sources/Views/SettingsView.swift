@@ -34,12 +34,12 @@ struct SettingsView: View {
 
             Section("Image Processing") {
                 Toggle("Remove Background", isOn: $options.removeBackground)
-                    .onChange(of: options.removeBackground) { _ in
+                    .onChange(of: options.removeBackground) {
                         onRegenerateIcons()
                     }
 
                 Toggle("Add Rounded Corners", isOn: $options.addRoundedCorners)
-                    .onChange(of: options.addRoundedCorners) { _ in
+                    .onChange(of: options.removeBackground) {
                         onRegenerateIcons()
                     }
 
@@ -49,7 +49,7 @@ struct SettingsView: View {
                             .font(.caption)
 
                         Slider(value: $options.cornerRadius, in: 0...0.5)
-                            .onChange(of: options.cornerRadius) { _ in
+                            .onChange(of: options.removeBackground) {
                                 onRegenerateIcons()
                             }
                     }
@@ -59,7 +59,7 @@ struct SettingsView: View {
                     get: { options.backgroundColor ?? .clear },
                     set: { options.backgroundColor = $0 }
                 ), supportsOpacity: true)
-                .onChange(of: options.backgroundColor) { _ in
+                .onChange(of: options.removeBackground) {
                     onRegenerateIcons()
                 }
 
