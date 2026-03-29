@@ -39,7 +39,7 @@ struct SettingsView: View {
                     }
 
                 Toggle("Add Rounded Corners", isOn: $options.addRoundedCorners)
-                    .onChange(of: options.removeBackground) {
+                    .onChange(of: options.addRoundedCorners) {
                         onRegenerateIcons()
                     }
 
@@ -49,7 +49,7 @@ struct SettingsView: View {
                             .font(.caption)
 
                         Slider(value: $options.cornerRadius, in: 0...0.5)
-                            .onChange(of: options.removeBackground) {
+                            .onChange(of: options.cornerRadius) {
                                 onRegenerateIcons()
                             }
                     }
@@ -59,9 +59,7 @@ struct SettingsView: View {
                     get: { options.backgroundColor ?? .clear },
                     set: { options.backgroundColor = $0 }
                 ), supportsOpacity: true)
-                .onChange(of: options.removeBackground) {
-                    onRegenerateIcons()
-                }
+                // Background color changes trigger via ColorPicker binding set
 
                 if options.hasBackgroundColor {
                     Button("Clear Background Color") {
