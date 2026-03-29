@@ -8,6 +8,7 @@
 import AppKit
 import Combine
 import SwiftUI
+import UniformTypeIdentifiers
 
 @MainActor
 class MainViewModel: ObservableObject {

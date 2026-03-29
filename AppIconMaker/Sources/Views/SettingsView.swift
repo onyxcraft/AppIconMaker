@@ -55,9 +55,9 @@ struct SettingsView: View {
                     }
                 }
 
-                ColorPicker("Background Color", selection: Binding(
-                    get: { options.backgroundColor ?? .clear },
-                    set: { options.backgroundColor = $0 }
+                ColorPicker("Background Color", selection: Binding<Color>(
+                    get: { Color(nsColor: options.backgroundColor ?? .clear) },
+                    set: { options.backgroundColor = NSColor($0) }
                 ), supportsOpacity: true)
                 // Background color changes trigger via ColorPicker binding set
 
